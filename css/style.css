@@ -32,7 +32,7 @@ header nav ul {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 30px;
 }
 header nav ul li {
   list-style: none;
@@ -41,6 +41,11 @@ header nav a {
   color: #ffffff;
   text-decoration: none;
   font-weight: bold;
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
+}
+header nav a:hover {
+  color: #ffffff;
 }
 
 .image-cover {
@@ -51,4 +56,18 @@ header nav a {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.header-button {
+  padding: 15px 30px;
+  background-color: #223E94;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.header-button:hover {
+  background-color: #140c41;
 }/*# sourceMappingURL=style.css.map */
