@@ -102,6 +102,10 @@ header nav a:hover {
 
 .hero-home {
   position: relative;
+  height: 100vh;
+}
+.hero-home .hero-image {
+  height: 100vh;
 }
 
 .message-container {
