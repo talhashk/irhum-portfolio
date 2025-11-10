@@ -30,8 +30,10 @@
                     <li><a href="#experience">Work Experience</a></li>
                     <li><a href="#recent">Recent Work</a></li>
                     <li><a href="#skills">Skills</a></li>
-                    <li><a href="#contact" class="header-button">Contact me</a></li>
                 </ul>
+                <div class="header-button-container">
+                    <a href="#contact" class="header-button">Contact me</a>
+                </div>
             </nav>
         </div>
     </header>
@@ -41,7 +43,108 @@
                 <div class="hero-image image-cover">
                     <img src="./images/hero-home.webp" alt="">
                 </div>
+                <div class="hero-home-content">
+                    <div class="message-container">
+                        <div class="top-bar">
+                            <div class="line"></div>
+                            <span>A MESSAGE FROM EARTH</span>
+                        </div>
+                        <h1>HELLO FELLOW GALAXY MEMBER</h1>
+                        <div class="bottom-bar">
+                            <span>A MESSAGE FROM EARTH</span>
+                            <div class="line"></div>
+                        </div>
+                        <h2>I AM Irhum Jawad</h2>
+                    </div>
+
+                </div>
+                <div class="click-button">
+                    <a href="#">
+                        CLICK <br> to open
+                    </a>
+                </div>
+                <div class="social-icons">
+                    <a href="#" class="github-icon">
+                        <img src="./images/github-icon.svg" alt="">
+                    </a>
+                    <a href="#" class="linkedin-icon">
+                        <img src="./images/in-icon.svg" alt="">
+                    </a>
+                </div>
             </div>
         </div>
     </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const container = document.querySelector(".message-container");
+            const button = document.querySelector(".click-button");
+            const socials = document.querySelectorAll(".social-icons a");
+
+            container.style.opacity = 0;
+            button.style.opacity = 0;
+            button.style.transform = "scale(0.9)";
+            socials.forEach(icon => {
+                icon.style.opacity = 0;
+                icon.style.transform = "scale(0.8)";
+            });
+
+            const headerTl = gsap.timeline({ defaults: { ease: "power2.out" } });
+
+            headerTl.to("header", {
+                top: 0,
+                opacity: 1,
+                duration: 1,
+                onUpdate: function () {
+                    if (this.progress() > 0.001 && !this.heroStarted) {
+                        this.heroStarted = true;
+
+                        const heroTl = gsap.timeline({ defaults: { ease: "power2.out" } });
+
+                        heroTl.to(container, { opacity: 1, duration: 0.8 })
+                            .to(".top-bar", { opacity: 1, y: 0, duration: 0.7 }, "+=0.1")
+                            .to(".top-bar .line", { width: 300, duration: 0.6 }, "<")
+                            .to(".top-bar span", { opacity: 1, y: 0, duration: 0.6 }, "<0.1")
+                            .fromTo(
+                                "h1",
+                                { width: 0, opacity: 1 },
+                                {
+                                    width: "100%",
+                                    duration: 1.2,
+                                    ease: "power2.out",
+                                    onUpdate: () => {
+                                        const el = document.querySelector("h1");
+                                        el.style.borderRightColor = Math.floor(Date.now() / 400) % 2 ? "#ceb7ff" : "transparent";
+                                    }
+                                },
+                                "+=0.1"
+                            )
+                            .to(".bottom-bar", { opacity: 1, y: 0, duration: 0.7 }, "-=0.5")
+                            .to(".bottom-bar .line", { width: 300, duration: 0.6 }, "<")
+                            .to(".bottom-bar span", { opacity: 1, y: 0, duration: 0.6 }, "<0.1")
+                            .fromTo(
+                                "h2",
+                                { width: 0, opacity: 1 },
+                                {
+                                    width: "100%",
+                                    duration: 1,
+                                    ease: "power2.out",
+                                    onUpdate: () => {
+                                        const el = document.querySelector("h2");
+                                        el.style.borderRightColor = Math.floor(Date.now() / 400) % 2 ? "#ceb7ff" : "transparent";
+                                    }
+                                },
+                                "+=0.1"
+                            )
+                            .to(button, { opacity: 1, scale: 1, duration: 0.7 }, "-=0.4");
+
+                        socials.forEach((icon, index) => {
+                            heroTl.to(icon, { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" }, `-=${0.5 - index * 0.08}`);
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+
 </body>
