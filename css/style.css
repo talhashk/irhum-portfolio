@@ -82,7 +82,10 @@ header nav a:hover {
 
 @font-face {
   font-family: "Death Star";
-  src: url("../fonts/Death Star.otf") format("woff");
+  src: url("../fonts/DeathStar.woff2") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 .hero-home-content {
   position: absolute;
@@ -238,7 +241,7 @@ header nav a:hover {
   position: absolute;
   inset: -10px;
   border-radius: 50%;
-  border: 2px solid rgba(173, 19, 250, 0.897);
+  border: 2px solid rgba(206, 183, 255, 0.46);
   opacity: 0;
   transform: scale(0.8);
   animation: modernPulse 2s infinite ease-out;
@@ -263,7 +266,7 @@ header nav a:hover {
     opacity: 0.2;
   }
   100% {
-    transform: scale(1.6);
+    transform: scale(1.4);
     opacity: 0;
   }
 }/*# sourceMappingURL=style.css.map */
