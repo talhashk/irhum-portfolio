@@ -73,7 +73,7 @@
 
                     </div>
                     <div class="click-button">
-                        <a href="#about">
+                        <a href="#">
                             CLICK <br> to open
                         </a>
                     </div>
@@ -91,23 +91,31 @@
         </section>
         <section id="about" class="about-section">
             <div class="wrapper">
-                <div class="about-section-box">
-                    <div class="about-image image-cover">
-                        <img src="./images/about-girl.webp" alt="">
+                <div class="about-main">
+                    <div class="about-section-box">
+                        <div class="about-image image-cover">
+                            <img src="./images/about-girl.webp" alt="">
+                        </div>
+                        <div class="about-section-content">
+                            <h2>About Me</h2>
+                            <p>
+                                I am Irhum Javad, a passionate and creative individual dedicated to pushing the
+                                boundaries
+                                of
+                                innovation. With a keen eye for detail and a relentless drive for excellence, I strive
+                                to
+                                create
+                                impactful solutions that resonate with audiences. My journey is fueled by curiosity and
+                                defined
+                                by a commitment to continuous learning and growth.
+                            </p>
+                        </div>
                     </div>
-                    <div class="about-section-content">
-                        <h2>About Me</h2>
-                        <p>
-                            I am Irhum Javad, a passionate and creative individual dedicated to pushing the boundaries
-                            of
-                            innovation. With a keen eye for detail and a relentless drive for excellence, I strive to
-                            create
-                            impactful solutions that resonate with audiences. My journey is fueled by curiosity and
-                            defined
-                            by a commitment to continuous learning and growth.
-                        </p>
+                    <div class="Illustration-shape image-cover">
+                        <img src="./images/Illustration.svg" alt="">
                     </div>
                 </div>
+
             </div>
         </section>
     </main>
@@ -290,10 +298,13 @@
             if (animatedSections.has(sectionId)) return;
             if (section.classList.contains("about-section")) {
                 const aboutBox = section.querySelector(".about-section-box");
+                const aboutmain = section.querySelector(".about-main");
                 aboutBox.classList.add("active");
+                aboutmain.classList.add("active");
                 gsap.timeline()
                     .from(aboutBox, { opacity: 0, scale: 0.85, duration: 1.4, ease: "power4.out" })
                     .from(section.querySelector(".about-image img"), { x: -100, opacity: 0, duration: 1.2, ease: "expo.out" }, "-=1.1")
+                    .from(section.querySelector(".Illustration-shape img"), { y: 100, scale: 0.5, opacity: 0, duration: 1.2, ease: "expo.out" }, "-=1.1")
                     .from(section.querySelector(".about-section-content"), { y: 40, opacity: 0, duration: 0.9, ease: "power3.out" }, "-=0.8")
                     .from(section.querySelector(".about-section-content h2"), { y: 25, opacity: 0, duration: 0.7, ease: "power2.out" }, "-=0.6")
                     .from(section.querySelector(".about-section-content p"), { y: 20, opacity: 0, duration: 0.8, ease: "power2.out" }, "-=0.7");
