@@ -13,6 +13,10 @@ body {
   margin: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .header-wrapper {
   max-width: 1440px;
   width: 90%;

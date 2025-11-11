@@ -50,7 +50,7 @@
         </div>
     </header>
     <main class="main">
-        <section id="section1">
+        <section id="home">
             <div class="wrapper">
                 <div class="hero-home">
                     <div class="hero-image image-cover">
@@ -89,7 +89,7 @@
                 </div>
             </div>
         </section>
-        <section id="section2" class="about-section">
+        <section id="about" class="about-section">
             <div class="wrapper">
                 <div class="about-section-box">
                     <div class="about-image image-cover">
@@ -192,7 +192,7 @@
             );
         });
     </script>
-
+    <!-- 
     <script>
         gsap.registerPlugin(ScrollTrigger);
         const sections = gsap.utils.toArray("section");
@@ -253,8 +253,100 @@
 
         playSectionAnimation(sections[0]);
         gotoSection(0, 1);
-    </script>
+    </script> -->
 
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+        const sections = gsap.utils.toArray("section");
+        let currentIndex = 0;
+        let animating = false;
+        const animatedSections = new Set();
+
+        gsap.set(sections, { autoAlpha: 0 });
+        gsap.set(sections[0], { autoAlpha: 1 });
+
+        function gotoSection(index, direction) {
+            if (animating) return;
+            index = Math.max(0, Math.min(sections.length - 1, index));
+            if (index === currentIndex) return;
+            animating = true;
+            const fromTop = direction === -1;
+            const dFactor = fromTop ? -1 : 1;
+            const tl = gsap.timeline({
+                defaults: { duration: 1, ease: "power2.inOut" },
+                onComplete: () => {
+                    animating = false;
+                    playSectionAnimation(sections[index]);
+                    history.replaceState(null, "", `#${sections[index].id}`);
+                }
+            });
+            tl.to(sections[currentIndex], { yPercent: -100 * dFactor, autoAlpha: 0 })
+                .fromTo(sections[index], { yPercent: 100 * dFactor, autoAlpha: 0 }, { yPercent: 0, autoAlpha: 1 }, 0);
+            currentIndex = index;
+        }
+
+        function playSectionAnimation(section) {
+            const sectionId = section.getAttribute("id") || section.tagName;
+            if (animatedSections.has(sectionId)) return;
+            if (section.classList.contains("about-section")) {
+                const aboutBox = section.querySelector(".about-section-box");
+                aboutBox.classList.add("active");
+                gsap.timeline()
+                    .from(aboutBox, { opacity: 0, scale: 0.85, duration: 1.4, ease: "power4.out" })
+                    .from(section.querySelector(".about-image img"), { x: -100, opacity: 0, duration: 1.2, ease: "expo.out" }, "-=1.1")
+                    .from(section.querySelector(".about-section-content"), { y: 40, opacity: 0, duration: 0.9, ease: "power3.out" }, "-=0.8")
+                    .from(section.querySelector(".about-section-content h2"), { y: 25, opacity: 0, duration: 0.7, ease: "power2.out" }, "-=0.6")
+                    .from(section.querySelector(".about-section-content p"), { y: 20, opacity: 0, duration: 0.8, ease: "power2.out" }, "-=0.7");
+            }
+            animatedSections.add(sectionId);
+        }
+
+        window.addEventListener("wheel", (e) => {
+            if (animating) return;
+            e.deltaY > 0 ? gotoSection(currentIndex + 1, 1) : gotoSection(currentIndex - 1, -1);
+        }, { passive: false });
+
+        let touchStartY = 0;
+        window.addEventListener("touchstart", (e) => { touchStartY = e.touches[0].clientY; });
+        window.addEventListener("touchend", (e) => {
+            if (animating) return;
+            const dy = e.changedTouches[0].clientY - touchStartY;
+            if (dy > 10) gotoSection(currentIndex - 1, -1);
+            if (dy < -10) gotoSection(currentIndex + 1, 1);
+        });
+
+        window.addEventListener("hashchange", () => {
+            const hash = location.hash.replace("#", "");
+            const index = sections.findIndex(sec => sec.id === hash);
+            if (index !== -1) {
+                const direction = index > currentIndex ? 1 : -1;
+                gotoSection(index, direction);
+            }
+        });
+
+        window.addEventListener("load", () => {
+            const hash = location.hash.replace("#", "");
+            const index = sections.findIndex(sec => sec.id === hash);
+            if (index !== -1) {
+                gotoSection(index, index > currentIndex ? 1 : -1);
+            } else {
+                playSectionAnimation(sections[0]);
+                gotoSection(0, 1);
+            }
+        });
+
+        document.querySelectorAll(".nav-links a").forEach(link => {
+            link.addEventListener("click", (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute("href").replace("#", "");
+                const index = sections.findIndex(sec => sec.id === targetId);
+                if (index !== -1) {
+                    const direction = index > currentIndex ? 1 : -1;
+                    gotoSection(index, direction);
+                }
+            });
+        });
+    </script>
 
 </body>
 
