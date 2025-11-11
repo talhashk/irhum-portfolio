@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Irhum Javad – Creative Portfolio & Personal Brand</title>
-    <link rel="stylesheet" href="./css/style.build.css">
+    <link rel="stylesheet" href="./css/style.css">
     <link rel="preload" href="/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
         <link rel="stylesheet" href="/css/style.css">
@@ -49,50 +49,79 @@
             </nav>
         </div>
     </header>
-    <section>
-        <div class="wrapper">
-            <div class="hero-home">
-                <div class="hero-image image-cover">
-                    <img src="./images/hero-home.webp" width="1728" height="1117" alt="Hero-image" fetchpriority="high">
-                </div>
-                <div class="hero-home-content">
-                    <div class="message-container">
-                        <div class="top-bar">
-                            <div class="line"></div>
-                            <span>Driven by Curiosity</span>
+    <main class="main">
+        <section id="section1">
+            <div class="wrapper">
+                <div class="hero-home">
+                    <div class="hero-image image-cover">
+                        <img src="./images/hero-home.webp" width="1728" height="1117" alt="Hero-image"
+                            fetchpriority="high">
+                    </div>
+                    <div class="hero-home-content">
+                        <div class="message-container">
+                            <div class="top-bar">
+                                <div class="line"></div>
+                                <span>a message from earth</span>
+                            </div>
+                            <h1>Driven by Curiosity, Defined by Innovation</h1>
+                            <div class="bottom-bar">
+                                <span>a message from earth</span>
+                                <div class="line"></div>
+                            </div>
+                            <h2>I AM Irhum Jawad</h2>
                         </div>
-                        <h1>HELLO FELLOW GALAXY MEMBER</h1>
-                        <div class="bottom-bar">
-                            <span>Defined by Innovation</span>
-                            <div class="line"></div>
-                        </div>
-                        <h2>I AM Irhum Jawad</h2>
+
+                    </div>
+                    <div class="click-button">
+                        <a href="#">
+                            CLICK <br> to open
+                        </a>
+                    </div>
+                    <div class="social-icons">
+                        <a href="#" class="github-icon" aria-label="GitHub profile">
+                            <img src="./images/github-icon.svg" width="45" height="45" alt="Social-icon">
+                        </a>
+                        <a href="#" class="linkedin-icon" aria-label="LinkedIn profile">
+                            <img src="./images/in-icon.svg" width="45" height="45" alt="Social-icon">
+                        </a>
                     </div>
 
                 </div>
-                <div class="click-button">
-                    <a href="#">
-                        CLICK <br> to open
-                    </a>
-                </div>
-                <div class="social-icons">
-                    <a href="#" class="github-icon" aria-label="GitHub profile">
-                        <img src="./images/github-icon.svg" width="45" height="45" alt="Social-icon">
-                    </a>
-                    <a href="#" class="linkedin-icon" aria-label="LinkedIn profile">
-                        <img src="./images/in-icon.svg" width="45" height="45" alt="Social-icon">
-                    </a>
-                </div>
-
             </div>
-        </div>
-    </section>
+        </section>
+        <section id="section2" class="about-section">
+            <div class="wrapper">
+                <div class="about-section-box">
+                    <div class="about-image image-cover">
+                        <img src="./images/about-girl.webp" alt="">
+                    </div>
+                    <div class="about-section-content">
+                        <h2>About Me</h2>
+                        <p>
+                            I am Irhum Javad, a passionate and creative individual dedicated to pushing the boundaries
+                            of
+                            innovation. With a keen eye for detail and a relentless drive for excellence, I strive to
+                            create
+                            impactful solutions that resonate with audiences. My journey is fueled by curiosity and
+                            defined
+                            by a commitment to continuous learning and growth.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
     <script type="text/javascript" src="./js/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const container = document.querySelector(".message-container");
-            const button = document.querySelector(".click-button");
-            const socials = document.querySelectorAll(".social-icons a");
+            const header = document.querySelector("header");
+            const block = document.querySelector(".hero-home");
+            const container = block.querySelector(".message-container");
+            const button = block.querySelector(".click-button");
+            const socials = block.querySelectorAll(".social-icons a");
 
             container.style.opacity = 0;
             button.style.opacity = 0;
@@ -104,61 +133,128 @@
 
             const headerTl = gsap.timeline({ defaults: { ease: "power2.out" } });
 
-            headerTl.to("header", {
-                top: 0,
-                opacity: 1,
-                duration: 1,
-                onUpdate: function () {
-                    if (this.progress() > 0.001 && !this.heroStarted) {
-                        this.heroStarted = true;
+            headerTl.fromTo(
+                header,
+                { top: "-100%", opacity: 0 },
+                {
+                    top: 0,
+                    opacity: 1,
+                    duration: 1.2,
+                    onUpdate: function () {
+                        if (this.progress() > 0.5 && !this.heroStarted) {
+                            this.heroStarted = true;
 
-                        const heroTl = gsap.timeline({ defaults: { ease: "power2.out" } });
+                            const heroTl = gsap.timeline({ defaults: { ease: "power2.out" } });
 
-                        heroTl.to(container, { opacity: 1, duration: 0.8 })
-                            .to(".top-bar", { opacity: 1, y: 0, duration: 0.7 }, "+=0.1")
-                            .to(".top-bar .line", { width: 300, duration: 0.6 }, "<")
-                            .to(".top-bar span", { opacity: 1, y: 0, duration: 0.6 }, "<0.1")
-                            .fromTo(
-                                "h1",
-                                { width: 0, opacity: 1 },
-                                {
-                                    width: "100%",
-                                    duration: 1.2,
-                                    ease: "power2.out",
-                                    onUpdate: () => {
-                                        const el = document.querySelector("h1");
-                                        el.style.borderRightColor = Math.floor(Date.now() / 400) % 2 ? "#ceb7ff" : "transparent";
-                                    }
-                                },
-                                "+=0.1"
-                            )
-                            .to(".bottom-bar", { opacity: 1, y: 0, duration: 0.7 }, "-=0.5")
-                            .to(".bottom-bar .line", { width: 300, duration: 0.6 }, "<")
-                            .to(".bottom-bar span", { opacity: 1, y: 0, duration: 0.6 }, "<0.1")
-                            .fromTo(
-                                "h2",
-                                { width: 0, opacity: 1 },
-                                {
-                                    width: "100%",
-                                    duration: 1,
-                                    ease: "power2.out",
-                                    onUpdate: () => {
-                                        const el = document.querySelector("h2");
-                                        el.style.borderRightColor = Math.floor(Date.now() / 400) % 2 ? "#ceb7ff" : "transparent";
-                                    }
-                                },
-                                "+=0.1"
-                            )
-                            .to(button, { opacity: 1, scale: 1, duration: 0.7 }, "-=0.4");
+                            heroTl.to(container, { opacity: 1, duration: 0.8 })
+                                .to(block.querySelector(".top-bar"), { opacity: 1, y: 0, duration: 0.7 }, "+=0.1")
+                                .to(block.querySelector(".top-bar .line"), { width: 300, duration: 0.6 }, "<")
+                                .to(block.querySelector(".top-bar span"), { opacity: 1, y: 0, duration: 0.6 }, "<0.1")
+                                .fromTo(
+                                    block.querySelector("h1"),
+                                    { width: 0, opacity: 1 },
+                                    {
+                                        width: "100%",
+                                        duration: 1.2,
+                                        ease: "power2.out",
+                                        onUpdate: () => {
+                                            const el = block.querySelector("h1");
+                                            el.style.borderRightColor = Math.floor(Date.now() / 400) % 2 ? "#ceb7ff" : "transparent";
+                                        }
+                                    },
+                                    "+=0.1"
+                                )
+                                .to(block.querySelector(".bottom-bar"), { opacity: 1, y: 0, duration: 0.7 }, "-=0.5")
+                                .to(block.querySelector(".bottom-bar .line"), { width: 300, duration: 0.6 }, "<")
+                                .to(block.querySelector(".bottom-bar span"), { opacity: 1, y: 0, duration: 0.6 }, "<0.1")
+                                .fromTo(
+                                    block.querySelector("h2"),
+                                    { width: 0, opacity: 1 },
+                                    {
+                                        width: "100%",
+                                        duration: 1,
+                                        ease: "power2.out",
+                                        onUpdate: () => {
+                                            const el = block.querySelector("h2");
+                                            el.style.borderRightColor = Math.floor(Date.now() / 400) % 2 ? "#ceb7ff" : "transparent";
+                                        }
+                                    },
+                                    "+=0.1"
+                                )
+                                .to(button, { opacity: 1, scale: 1, duration: 0.7 }, "-=0.4");
 
-                        socials.forEach((icon, index) => {
-                            heroTl.to(icon, { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" }, `-=${0.5 - index * 0.08}`);
-                        });
+                            socials.forEach((icon, index) => {
+                                heroTl.to(icon, { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" }, `-=${0.5 - index * 0.08}`);
+                            });
+                        }
                     }
                 }
-            });
+            );
         });
     </script>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+        const sections = gsap.utils.toArray("section");
+        let currentIndex = 0;
+        let animating = false;
+        const animatedSections = new Set();
+        gsap.set(sections, { autoAlpha: 0 });
+        gsap.set(sections[0], { autoAlpha: 1 });
+
+        function gotoSection(index, direction) {
+            if (animating) return;
+            index = Math.max(0, Math.min(sections.length - 1, index));
+            if (index === currentIndex) return;
+            animating = true;
+            const fromTop = direction === -1;
+            const dFactor = fromTop ? -1 : 1;
+            const tl = gsap.timeline({
+                defaults: { duration: 1, ease: "power2.inOut" },
+                onComplete: () => {
+                    animating = false;
+                    playSectionAnimation(sections[index]);
+                }
+            });
+            tl.to(sections[currentIndex], { yPercent: -100 * dFactor, autoAlpha: 0 })
+                .fromTo(sections[index], { yPercent: 100 * dFactor, autoAlpha: 0 }, { yPercent: 0, autoAlpha: 1 }, 0);
+            currentIndex = index;
+        }
+
+        function playSectionAnimation(section) {
+            const sectionId = section.getAttribute("class") || section.tagName;
+            if (animatedSections.has(sectionId)) return;
+            if (section.classList.contains("about-section")) {
+                const aboutBox = section.querySelector(".about-section-box");
+                aboutBox.classList.add("active");
+                gsap.timeline()
+                    .from(aboutBox, { opacity: 0, scale: 0.85, duration: 1.4, ease: "power4.out" })
+                    .from(section.querySelector(".about-image img"), { x: -100, opacity: 0, duration: 1.2, ease: "expo.out" }, "-=1.1")
+                    .from(section.querySelector(".about-section-content"), { y: 40, opacity: 0, duration: 0.9, ease: "power3.out" }, "-=0.8")
+                    .from(section.querySelector(".about-section-content h2"), { y: 25, opacity: 0, duration: 0.7, ease: "power2.out" }, "-=0.6")
+                    .from(section.querySelector(".about-section-content p"), { y: 20, opacity: 0, duration: 0.8, ease: "power2.out" }, "-=0.7");
+            }
+            animatedSections.add(sectionId);
+        }
+
+        window.addEventListener("wheel", (e) => {
+            if (animating) return;
+            e.deltaY > 0 ? gotoSection(currentIndex + 1, 1) : gotoSection(currentIndex - 1, -1);
+        }, { passive: false });
+
+        let touchStartY = 0;
+        window.addEventListener("touchstart", (e) => { touchStartY = e.touches[0].clientY; });
+        window.addEventListener("touchend", (e) => {
+            if (animating) return;
+            const dy = e.changedTouches[0].clientY - touchStartY;
+            if (dy > 10) gotoSection(currentIndex - 1, -1);
+            if (dy < -10) gotoSection(currentIndex + 1, 1);
+        });
+
+        playSectionAnimation(sections[0]);
+        gotoSection(0, 1);
+    </script>
+
 
 </body>
 
