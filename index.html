@@ -20,6 +20,10 @@
     <link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-title" content="WpExperts" />
     <link rel="manifest" href="./favicon/site.webmanifest" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
 
     <meta name="description"
         content="Explore the world of Irhum Javad — a showcase of creativity, projects, and personal achievements. Discover ideas, inspirations, and stories behind the work.">
@@ -99,15 +103,13 @@
                         <div class="about-section-content">
                             <h2>About Me</h2>
                             <p>
-                                I am Irhum Javad, a passionate and creative individual dedicated to pushing the
-                                boundaries
-                                of
-                                innovation. With a keen eye for detail and a relentless drive for excellence, I strive
-                                to
-                                create
-                                impactful solutions that resonate with audiences. My journey is fueled by curiosity and
-                                defined
-                                by a commitment to continuous learning and growth.
+                                I’m passionate about using technology to make life simpler and smarter. I focus on AI
+                                and Machine Learning to build
+                                meaningful, user-centered solutions—from adaptive smart home systems to projects with
+                                real-world impact. Driven by
+                                curiosity, I’m always learning, experimenting, and refining ideas. I enjoy collaborating
+                                with creative thinkers and aim
+                                to use technology to make a positive, lasting difference.
                             </p>
                         </div>
                     </div>
@@ -118,6 +120,55 @@
 
             </div>
         </section>
+        <section class="experience-section">
+
+            <div class="slider-fixed-image">
+                <img src="./images/slider-fixed-image.webp" alt="">
+            </div>
+
+            <div class="experience-title">MY WORK EXPERIENCE</div>
+
+            <div class="swiper experience-slider">
+
+                <div class="swiper-wrapper">
+
+                    <div class="swiper-slide exp-card">
+                        <div class="exp-position">MICROSOFT SDE INTERN</div>
+                        <div class="exp-duration">13TH JULY TO 14TH AUGUST 2022</div>
+
+                        <div class="exp-box">
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide exp-card">
+                        <div class="exp-position">GOOGLE FRONTEND INTERN</div>
+                        <div class="exp-duration">1ST MAY TO 1ST JULY 2021</div>
+
+                        <div class="exp-box">
+                            Dummy description for second slide. Replace with real experience.
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide exp-card">
+                        <div class="exp-position">AMAZON SOFTWARE TRAINEE</div>
+                        <div class="exp-duration">JAN 2020 TO APRIL 2020</div>
+
+                        <div class="exp-box">
+                            Dummy description for third slide. Replace with your own content.
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="swiper-button-prev custom-prev"></div>
+                <div class="swiper-button-next custom-next"></div>
+
+            </div>
+
+        </section>
+
     </main>
 
     <script type="text/javascript" src="./js/gsap.min.js"></script>
@@ -361,6 +412,18 @@
     <script>
         window.addEventListener("load", function () {
             window.scrollTo(0, 0);
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        var swiper = new Swiper(".experience-slider", {
+            loop: true,
+            speed: 900,
+            navigation: {
+                nextEl: ".custom-next",
+                prevEl: ".custom-prev",
+            },
         });
     </script>
 </body>

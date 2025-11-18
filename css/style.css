@@ -353,4 +353,124 @@ section {
   bottom: -180px;
   right: -210px;
   top: auto;
+}
+
+.experience-section {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+.experience-section .slider-fixed-image {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.experience-section .slider-fixed-image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.experience-section .experience-title {
+  position: absolute;
+  top: 150px;
+  width: 100%;
+  text-align: center;
+  font-size: 38px;
+  font-weight: 700;
+  color: #cbb6ff;
+  letter-spacing: 2px;
+  z-index: 5;
+  text-shadow: 0 0 12px #a57cff;
+  padding: 12px 40px;
+  border: 2px solid rgba(197, 167, 255, 0.4);
+  border-radius: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: -moz-max-content;
+  width: max-content;
+}
+.experience-section .experience-slider {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 5;
+}
+.experience-section .experience-slider .exp-card {
+  text-align: center;
+  color: #fff;
+  position: relative;
+  padding-top: 320px;
+}
+.experience-section .experience-slider .exp-card .exp-position {
+  font-size: 34px;
+  font-weight: 700;
+  color: #d8c9ff;
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px rgba(200, 170, 255, 0.5);
+}
+.experience-section .experience-slider .exp-card .exp-duration {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 230px;
+}
+.experience-section .experience-slider .exp-card .exp-box {
+  width: 30%;
+  margin: 0 auto;
+  padding: 25px 35px;
+  border: 3px solid rgba(255, 255, 255, 0.35);
+  border-radius: 14px;
+  background: rgba(5, 5, 50, 0.4);
+  color: #e8e6ff;
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+}
+.experience-section .experience-slider .custom-prev,
+.experience-section .experience-slider .custom-next {
+  width: 65px;
+  height: 65px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: url("../images/left-arrow.svg") no-repeat center/contain;
+  z-index: 20;
+  cursor: pointer;
+}
+.experience-section .experience-slider .custom-prev::after,
+.experience-section .experience-slider .custom-next::after {
+  display: none;
+}
+.experience-section .experience-slider .custom-prev {
+  left: 50px;
+}
+.experience-section .experience-slider .custom-next {
+  transform: translateY(-50%) rotate(180deg);
+  right: 50px;
+}
+
+.exp-box {
+  position: relative;
+}
+.exp-box::before, .exp-box::after {
+  content: "";
+  position: absolute;
+  top: -25px;
+  left: -30px;
+  width: 62px;
+  height: 55px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.exp-box::before {
+  background-image: url(../images/click-left-shape.svg);
+}
+.exp-box::after {
+  background-image: url(../images/click-right-shape.svg);
+  bottom: -25px;
+  right: -35px;
+  top: auto;
+  left: auto;
 }/*# sourceMappingURL=style.css.map */
