@@ -284,8 +284,9 @@ header nav a:hover {
   background-size: cover;
   height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: end;
   justify-content: center;
+  padding-bottom: 70px;
 }
 
 .about-section-box {

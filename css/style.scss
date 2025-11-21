@@ -281,8 +281,10 @@ header {
   background-size: cover;
   height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
+
+  align-items: end;
+    justify-content: center;
+    padding-bottom: 70px;
 }
 .about-section-box {
   max-width: 630px;
