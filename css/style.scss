@@ -1331,6 +1331,7 @@ $font-family-sans: "Inter", sans-serif;
   }
   .contact-form {
     padding: 24px 20px;
+    width: 100%;
     h2 {
       font-size: 24px;
     }
@@ -1347,5 +1348,9 @@ $font-family-sans: "Inter", sans-serif;
   }
   .logo {
     top: -5px;
+  }
+  .footer .footer-bottom {
+    padding: 0;
+    justify-content: center;
   }
 }

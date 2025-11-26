@@ -1231,6 +1231,7 @@ header nav a:hover {
   }
   .contact-form {
     padding: 24px 20px;
+    width: 100%;
   }
   .contact-form h2 {
     font-size: 24px;
@@ -1247,5 +1248,9 @@ header nav a:hover {
   }
   .logo {
     top: -5px;
+  }
+  .footer .footer-bottom {
+    padding: 0;
+    justify-content: center;
   }
 }/*# sourceMappingURL=style.css.map */
