@@ -1357,4 +1357,7 @@ $font-family-sans: "Inter", sans-serif;
     background-size: 70vw;
     background-position: right 100px;
   }
+  html {
+    scroll-padding-top: 150px;
+  }
 }
