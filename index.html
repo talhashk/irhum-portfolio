@@ -340,6 +340,8 @@
                 icon.style.transform = "scale(0.8)";
             });
 
+            const isMobile = window.innerWidth <= 768;
+
             const headerTl = gsap.timeline({ defaults: { ease: "power2.out" } });
 
             headerTl.fromTo(
@@ -353,28 +355,16 @@
                         if (this.progress() > 0.5 && !this.heroStarted) {
                             this.heroStarted = true;
 
-                            const heroTl = gsap.timeline({
-                                defaults: { ease: "power2.out" },
-                            });
+                            const heroTl = gsap.timeline({ defaults: { ease: "power2.out" } });
 
                             heroTl
                                 .to(container, { opacity: 1, duration: 0.8 })
-                                .to(
-                                    block.querySelector(".top-bar"),
-                                    { opacity: 1, y: 0, duration: 0.7 },
-                                    "+=0.1"
-                                )
-                                .to(
-                                    block.querySelector(".top-bar .line"),
-                                    { width: 300, duration: 0.6 },
-                                    "<"
-                                )
-                                .to(
-                                    block.querySelector(".top-bar span"),
-                                    { opacity: 1, y: 0, duration: 0.6 },
-                                    "<0.1"
-                                )
-                                .fromTo(
+                                .to(block.querySelector(".top-bar"), { opacity: 1, y: 0, duration: 0.7 }, "+=0.1")
+                                .to(block.querySelector(".top-bar .line"), { width: 300, duration: 0.6 }, "<")
+                                .to(block.querySelector(".top-bar span"), { opacity: 1, y: 0, duration: 0.6 }, "<0.1");
+
+                            if (!isMobile) {
+                                heroTl.fromTo(
                                     block.querySelector("h1"),
                                     { width: 0, opacity: 1 },
                                     {
@@ -384,29 +374,22 @@
                                         onUpdate: () => {
                                             const el = block.querySelector("h1");
                                             el.style.borderRightColor =
-                                                Math.floor(Date.now() / 400) % 2
-                                                    ? "#ceb7ff"
-                                                    : "transparent";
+                                                Math.floor(Date.now() / 400) % 2 ? "#ceb7ff" : "transparent";
                                         },
                                     },
                                     "+=0.1"
-                                )
-                                .to(
-                                    block.querySelector(".bottom-bar"),
-                                    { opacity: 1, y: 0, duration: 0.7 },
-                                    "-=0.5"
-                                )
-                                .to(
-                                    block.querySelector(".bottom-bar .line"),
-                                    { width: 300, duration: 0.6 },
-                                    "<"
-                                )
-                                .to(
-                                    block.querySelector(".bottom-bar span"),
-                                    { opacity: 1, y: 0, duration: 0.6 },
-                                    "<0.1"
-                                )
-                                .fromTo(
+                                );
+                            } else {
+                                heroTl.to(block.querySelector("h1"), { opacity: 1, duration: 0.8 });
+                            }
+
+                            heroTl
+                                .to(block.querySelector(".bottom-bar"), { opacity: 1, y: 0, duration: 0.7 }, "-=0.5")
+                                .to(block.querySelector(".bottom-bar .line"), { width: 300, duration: 0.6 }, "<")
+                                .to(block.querySelector(".bottom-bar span"), { opacity: 1, y: 0, duration: 0.6 }, "<0.1");
+
+                            if (!isMobile) {
+                                heroTl.fromTo(
                                     block.querySelector("h2"),
                                     { width: 0, opacity: 1 },
                                     {
@@ -416,21 +399,19 @@
                                         onUpdate: () => {
                                             const el = block.querySelector("h2");
                                             el.style.borderRightColor =
-                                                Math.floor(Date.now() / 400) % 2
-                                                    ? "#ceb7ff"
-                                                    : "transparent";
+                                                Math.floor(Date.now() / 400) % 2 ? "#ceb7ff" : "transparent";
                                         },
                                     },
                                     "+=0.1"
-                                )
-                                .to(button, { opacity: 1, scale: 1, duration: 0.7 }, "-=0.4");
+                                );
+                            } else {
+                                heroTl.to(block.querySelector("h2"), { opacity: 1, duration: 0.8 });
+                            }
+
+                            heroTl.to(button, { opacity: 1, scale: 1, duration: 0.7 }, "-=0.4");
 
                             socials.forEach((icon, index) => {
-                                heroTl.to(
-                                    icon,
-                                    { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" },
-                                    `-=${0.5 - index * 0.08}`
-                                );
+                                heroTl.to(icon, { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" }, `-=${0.5 - index * 0.08}`);
                             });
                         }
                     },
@@ -438,6 +419,7 @@
             );
         });
     </script>
+
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {

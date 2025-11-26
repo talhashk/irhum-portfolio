@@ -1082,12 +1082,13 @@ header nav a:hover {
   }
   .click-button {
     position: absolute;
-    bottom: 12dvh;
+    bottom: 15dvh;
   }
   .message-container h1 {
     font-size: 36px;
     margin: 15px 0;
     white-space: normal;
+    min-width: 100%;
   }
   .hero-image img {
     -o-object-position: bottom;
