@@ -1321,7 +1321,7 @@ $font-family-sans: "Inter", sans-serif;
     padding: 0;
   }
   .contact-info {
-    flex: 1;
+    flex: initial;
     padding-right: 0;
     max-width: 100%;
     padding: 50px 0;
@@ -1350,7 +1350,11 @@ $font-family-sans: "Inter", sans-serif;
     top: -5px;
   }
   .footer .footer-bottom {
-    padding: 0;
+    padding: 20px 0 0;
     justify-content: center;
+  }
+  .contact-us-section {
+    background-size: 70vw;
+    background-position: right 100px;
   }
 }
