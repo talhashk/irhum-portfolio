@@ -3,13 +3,14 @@
   padding: 0;
   box-sizing: border-box;
 }
-@import '../css/swiper-bundle.min.css';
+@import "../css/swiper-bundle.min.css";
 
 body {
   font-family: Arial, sans-serif;
   background-color: #000000;
   color: #ffffff;
   margin: 0;
+  overflow-x: hidden;
 }
 html {
   scroll-behavior: smooth;
@@ -582,15 +583,15 @@ header {
 }
 $primary-dark-bg: #0f103f;
 $secondary-dark-bg: #110729;
-$card-bg: #291a50; 
-$form-input-bg: #412f71; 
+$card-bg: #291a50;
+$form-input-bg: #412f71;
 $text-color: #ffffff;
 $light-text: rgba(255, 255, 255, 0.7);
 $line-color: rgba(255, 255, 255, 0.1);
 $border-radius: 15px;
 
-$button-color-start: #8a2be2; 
-$button-color-end: #6d0ad4; 
+$button-color-start: #8a2be2;
+$button-color-end: #6d0ad4;
 
 $twitter-color: #1da1f2;
 $linkedin-color: #0a66c2;
@@ -736,15 +737,15 @@ $youtube-color: #ff0000;
     margin-bottom: 20px;
   }
 }
-$cf-primary-accent: #223e94; 
-$cf-secondary-accent: #3759ad; 
+$cf-primary-accent: #223e94;
+$cf-secondary-accent: #3759ad;
 $cf-input-base-bg: rgba(65, 47, 113, 0.1);
 
 $cf-color-text-light: #e0e0e0;
 $cf-color-text-faint: #b0b0b0;
 $cf-color-heading: #ffffff;
 
-$cf-button-start-color: $cf-primary-accent; 
+$cf-button-start-color: $cf-primary-accent;
 $cf-button-end-color: $cf-secondary-accent;
 $cf-button-text-color: #ffffff;
 
@@ -806,7 +807,7 @@ $cf-button-text-color: #ffffff;
 
     &:focus {
       background-color: rgba(255, 255, 255, 0.15);
-      box-shadow: 0 0 0 3px $cf-button-end-color; 
+      box-shadow: 0 0 0 3px $cf-button-end-color;
     }
   }
 
@@ -888,10 +889,10 @@ $cf-button-text-color: #ffffff;
       gap: 8px;
       opacity: 0.8;
       transition: color 0.3s, opacity 0.3s;
-img{
-  width: 18px;
-  height: 18px;
-}
+      img {
+        width: 18px;
+        height: 18px;
+      }
       .fas {
         color: white;
       }
@@ -1138,5 +1139,204 @@ $font-family-sans: "Inter", sans-serif;
 
   @media (max-width: 768px) {
     flex-direction: column;
+  }
+}
+@media (max-width: 1003px) {
+  main {
+    overflow: hidden;
+    overflow-y: auto;
+  }
+  .message-container h2 {
+    font-size: 36px;
+    margin: 40px 0 0;
+  }
+  .social-icons {
+    display: none;
+  }
+  .header-button {
+    padding: 15px 20px;
+  }
+  header {
+    padding: 20px 0;
+  }
+
+  .nav-links {
+    display: none;
+  }
+  .message-container {
+    padding-bottom: 35dvh;
+    width: 90%;
+    margin: auto;
+  }
+  .message-container .top-bar span,
+  .message-container .bottom-bar span {
+    font-size: 16px;
+  }
+  .message-container h1 {
+    font-size: 39px;
+    margin: 15px 0;
+  }
+  .hero-image img {
+    object-position: bottom;
+  }
+  .message-container h2 {
+    -webkit-text-stroke: 1px #ffffff;
+  }
+  .click-button a,
+  .click-button a:visited {
+    font-size: 32px;
+  }
+  .about-section-content {
+    max-width: 100%;
+    width: 90%;
+    margin: 0 auto;
+    padding: 0;
+  }
+  .about-image {
+    position: absolute;
+    top: -190px;
+    left: -2px;
+    height: 276px;
+    right: auto;
+  }
+  .about-section {
+    padding: 60px 0;
+  }
+  .Illustration-shape {
+    bottom: -155px;
+    right: 0;
+    top: auto;
+    width: 180px;
+  }
+  .about-section-box {
+    min-height: 500px;
+    border-radius: 50px;
+    overflow: visible;
+  }
+  .experience-section {
+    .experience-title {
+      top: 70px;
+      width: 90%;
+      margin: 0 auto;
+      font-size: 30px;
+    }
+
+    .experience-slider {
+      .exp-card {
+        padding-top: 240px;
+        padding-bottom: 80px;
+
+        .exp-position {
+          width: 90%;
+          font-size: 28px;
+          margin: 0 auto;
+        }
+
+        .exp-box {
+          width: 80%;
+          font-size: 16px;
+          padding: 15px 25px;
+        }
+      }
+
+      .custom-prev,
+      .custom-next {
+        display: none;
+      }
+    }
+  }
+  #certificate,
+  #projects {
+    padding: 70px 0;
+  }
+  .certificate-heading h2 {
+    font-size: 30px;
+
+    padding: 12px 20px;
+  }
+  .projects-heading h2 {
+    font-size: 30px;
+    margin-bottom: 0;
+    padding: 12px 20px;
+  }
+  .skills-title {
+    font-size: 30px;
+    margin-bottom: 0;
+    padding: 12px 20px;
+  }
+  .certificate-single {
+    width: 100%;
+  }
+  .skills-content {
+    padding: 70px 0;
+  }
+  .skills-grid {
+    width: 90%;
+    margin: 20px auto 0;
+    gap: 16px 16px;
+  }
+  .skill-box {
+    width: 47%;
+    font-size: 20px;
+    padding: 20px;
+  }
+  .skills-subtitle {
+    margin-top: 3cqh;
+
+    font-size: 26px;
+    letter-spacing: 1px;
+  }
+  header,
+  .logo {
+    transition: all 0.3s ease-in-out;
+  }
+  header.shrink {
+    background-color: #1e0438;
+    padding: 10px 0;
+    .logo {
+      position: relative;
+      top: -5px;
+    }
+  }
+  .illustration-area {
+    display: none;
+  }
+  .contact-container {
+    flex-wrap: wrap;
+    height: max-content;
+    margin: 0 auto;
+    width: 90%;
+    max-width: 100%;
+  }
+  .contact-card {
+    flex-wrap: wrap;
+    margin: 0 auto;
+    box-shadow: none;
+    padding: 0;
+  }
+  .contact-info {
+    flex: 1;
+    padding-right: 0;
+    max-width: 100%;
+    padding: 50px 0;
+  }
+  .contact-form button[type="submit"] {
+    width: 100%;
+  }
+  .contact-form {
+    padding: 24px 20px;
+    h2 {
+      font-size: 24px;
+    }
+  }
+  .footer {
+    margin-top: 50px;
+  }
+  .footer .footer-nav {
+    flex-wrap: wrap;
+    width: 90%;
+    margin: 0 auto 25px;
+    justify-content: space-between;
+    gap: 30px 20px;
   }
 }
