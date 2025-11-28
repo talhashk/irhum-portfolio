@@ -1136,7 +1136,9 @@ $font-family-sans: "Inter", sans-serif;
   align-items: flex-start;
   justify-content: space-between;
   gap: 2rem;
-
+  &:nth-child(n + 2) {
+    margin-top: 50px;
+  }
   @media (max-width: 768px) {
     flex-direction: column;
   }

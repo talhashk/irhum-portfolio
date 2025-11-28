@@ -1044,6 +1044,9 @@ header nav a:hover {
   justify-content: space-between;
   gap: 2rem;
 }
+.single-project:nth-child(n+2) {
+  margin-top: 50px;
+}
 @media (max-width: 768px) {
   .single-project {
     flex-direction: column;
