@@ -1138,6 +1138,10 @@ $font-family-sans: "Inter", sans-serif;
   gap: 2rem;
   &:nth-child(n + 2) {
     margin-top: 50px;
+    .project-image {
+      position: sticky;
+      top: 100px;
+    }
   }
   @media (max-width: 768px) {
     flex-direction: column;

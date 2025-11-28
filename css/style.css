@@ -1047,6 +1047,10 @@ header nav a:hover {
 .single-project:nth-child(n+2) {
   margin-top: 50px;
 }
+.single-project:nth-child(n+2) .project-image {
+  position: sticky;
+  top: 100px;
+}
 @media (max-width: 768px) {
   .single-project {
     flex-direction: column;
