@@ -390,6 +390,7 @@ header nav a:hover {
   height: 100%;
   position: relative;
   z-index: 5;
+  cursor: grab;
 }
 .experience-section .experience-slider .exp-card {
   text-align: center;
