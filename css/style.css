@@ -1058,6 +1058,11 @@ header nav a:hover {
 }
 
 @media (max-width: 1003px) {
+  .single-project:nth-child(n+2) .project-image {
+    position: inherit;
+    top: 100px;
+    margin: 0;
+  }
   main {
     overflow: hidden;
     overflow-y: auto;
