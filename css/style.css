@@ -1220,6 +1220,9 @@ header nav a:hover {
   #projects {
     padding: 70px 0;
   }
+  .project-content .project-content-text {
+    padding: 1.2rem;
+  }
   .certificate-heading h2 {
     font-size: 30px;
     padding: 12px 20px;
