@@ -1043,7 +1043,7 @@ $font-family-sans: "Inter", sans-serif;
     margin-bottom: 10px;
   }
   .project-content-text {
-    background: rgb(200 50 139);
+    background: rgb(12 12 12 / 70%);
     color: $color-text-light;
     padding: 2.5rem;
     box-sizing: border-box;
@@ -1067,7 +1067,7 @@ $font-family-sans: "Inter", sans-serif;
       display: block;
       width: 50px;
       height: 3px;
-      background: $color-accent-purple;
+      background: white;
       border-radius: 2px;
       margin-top: 8px;
       box-shadow: 0 0 8px $color-accent-purple;
