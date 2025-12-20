@@ -1449,7 +1449,7 @@ $font-family-sans: "Inter", sans-serif;
 }
 
 .single-project-inner {
-  padding: 6rem 0;
+  padding: 10rem 0;
   background: radial-gradient(
     1200px 600px at top center,
     #1b1d6b 0%,
@@ -1676,5 +1676,11 @@ $font-family-sans: "Inter", sans-serif;
 
   .single-project-btn {
     text-align: center;
+  }
+}
+.single-project {
+  header {
+    top: 0;
+    opacity: 1;
   }
 }

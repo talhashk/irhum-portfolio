@@ -1351,7 +1351,7 @@ header nav a:hover {
 }
 
 .single-project-inner {
-  padding: 6rem 0;
+  padding: 10rem 0;
   background: radial-gradient(1200px 600px at top center, #1b1d6b 0%, #0f103f 45%, #070826 100%);
   color: #eaeaea;
   font-family: Inter, system-ui, sans-serif;
@@ -1546,4 +1546,8 @@ header nav a:hover {
   .single-project-btn {
     text-align: center;
   }
+}
+.single-project header {
+  top: 0;
+  opacity: 1;
 }/*# sourceMappingURL=style.css.map */
