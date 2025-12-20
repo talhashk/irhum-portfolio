@@ -249,293 +249,39 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const header = document.querySelector("header");
-            const block = document.querySelector(".hero-home");
-            const container = block.querySelector(".message-container");
-            const button = block.querySelector(".click-button");
-            const socials = block.querySelectorAll(".social-icons a");
-
-            container.style.opacity = 0;
-            button.style.opacity = 0;
-            button.style.transform = "scale(0.9)";
-            socials.forEach((icon) => {
-                icon.style.opacity = 0;
-                icon.style.transform = "scale(0.8)";
-            });
-
-            const isMobile = window.innerWidth <= 768;
-
-            const headerTl = gsap.timeline({ defaults: { ease: "power2.out" } });
-
-            headerTl.fromTo(
-                header,
-                { top: "-100%", opacity: 0 },
-                {
-                    top: 0,
-                    opacity: 1,
-                    duration: 1.2,
-                    onUpdate: function () {
-                        if (this.progress() > 0.5 && !this.heroStarted) {
-                            this.heroStarted = true;
-
-                            const heroTl = gsap.timeline({ defaults: { ease: "power2.out" } });
-
-                            heroTl
-                                .to(container, { opacity: 1, duration: 0.8 })
-                                .to(block.querySelector(".top-bar"), { opacity: 1, y: 0, duration: 0.7 }, "+=0.1")
-                                .to(block.querySelector(".top-bar .line"), { width: 300, duration: 0.6 }, "<")
-                                .to(block.querySelector(".top-bar span"), { opacity: 1, y: 0, duration: 0.6 }, "<0.1");
-
-                            if (!isMobile) {
-                                heroTl.fromTo(
-                                    block.querySelector("h1"),
-                                    { width: 0, opacity: 1 },
-                                    {
-                                        width: "100%",
-                                        duration: 1.2,
-                                        ease: "power2.out",
-                                        onUpdate: () => {
-                                            const el = block.querySelector("h1");
-                                            el.style.borderRightColor =
-                                                Math.floor(Date.now() / 400) % 2 ? "#ceb7ff" : "transparent";
-                                        },
-                                    },
-                                    "+=0.1"
-                                );
-                            } else {
-                                heroTl.to(block.querySelector("h1"), { opacity: 1, duration: 0.8 });
-                            }
-
-                            heroTl
-                                .to(block.querySelector(".bottom-bar"), { opacity: 1, y: 0, duration: 0.7 }, "-=0.5")
-                                .to(block.querySelector(".bottom-bar .line"), { width: 300, duration: 0.6 }, "<")
-                                .to(block.querySelector(".bottom-bar span"), { opacity: 1, y: 0, duration: 0.6 }, "<0.1");
-
-                            if (!isMobile) {
-                                heroTl.fromTo(
-                                    block.querySelector("h2"),
-                                    { width: 0, opacity: 1 },
-                                    {
-                                        width: "100%",
-                                        duration: 1,
-                                        ease: "power2.out",
-                                        onUpdate: () => {
-                                            const el = block.querySelector("h2");
-                                            el.style.borderRightColor =
-                                                Math.floor(Date.now() / 400) % 2 ? "#ceb7ff" : "transparent";
-                                        },
-                                    },
-                                    "+=0.1"
-                                );
-                            } else {
-                                heroTl.to(block.querySelector("h2"), { opacity: 1, duration: 0.8 });
-                            }
-
-                            heroTl.to(button, { opacity: 1, scale: 1, duration: 0.7 }, "-=0.4");
-
-                            socials.forEach((icon, index) => {
-                                heroTl.to(icon, { opacity: 1, scale: 1, duration: 0.6, ease: "power2.out" }, `-=${0.5 - index * 0.08}`);
-                            });
-                        }
-                    },
-                }
-            );
-        });
-    </script>
-
-
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
             const sr = ScrollReveal({
                 reset: false,
-                duration: 1600,
+                distance: "60px",
+                duration: 1200,
                 opacity: 0,
-                easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+                easing: "cubic-bezier(0.22, 1, 0.36, 1)"
             });
 
-            sr.reveal(".about-section-box", { scale: 0.88, distance: "0px" });
-            sr.reveal(".about-image img", {
-                origin: "left",
-                distance: "130px",
-                delay: 200,
-            });
-            sr.reveal(".Illustration-shape img", {
-                origin: "bottom",
-                distance: "130px",
-                scale: 0.65,
-                delay: 350,
-            });
-            sr.reveal(".about-section-content", {
-                origin: "bottom",
-                distance: "60px",
-                delay: 500,
-            });
-            sr.reveal(".about-section-content h2", {
-                origin: "bottom",
-                distance: "40px",
-                delay: 650,
-            });
-            sr.reveal(".about-section-content p", {
-                origin: "bottom",
-                distance: "35px",
-                delay: 750,
-            });
+            sr.reveal("header", { origin: "top", distance: "80px", duration: 1000, delay: 100 });
+            sr.reveal(".single-project-label", { origin: "left", distance: "40px", delay: 200, scale: 0.95 });
+            sr.reveal(".single-project-title", { origin: "bottom", distance: "60px", delay: 300 });
+            sr.reveal(".single-project-description", { origin: "bottom", distance: "50px", delay: 400, scale: 0.95 });
 
-            sr.reveal(".experience-title", {
-                origin: "bottom",
-                distance: "60px",
-                delay: 250,
-            });
-            sr.reveal(".experience-slider", {
-                origin: "bottom",
-                distance: "90px",
-                delay: 450,
-            });
+            sr.reveal(".single-project-tech-list span", { origin: "right", distance: "40px", delay: 500, interval: 100, scale: 0.9 });
 
-            sr.reveal("#certificate .certificate-heading", {
-                distance: "45px",
-                origin: "bottom",
-                delay: 250,
-            });
-            sr.reveal("#certificate .certificate-items", {
-                distance: "60px",
-                origin: "bottom",
-                delay: 350,
-            });
-            sr.reveal("#certificate .certificate-single:nth-child(odd)", {
-                distance: "90px",
-                origin: "left",
-                rotate: { z: -2 },
-                scale: 0.92,
-                interval: 220,
-                delay: 450,
-            });
-            sr.reveal("#certificate .certificate-single:nth-child(even)", {
-                distance: "90px",
-                origin: "right",
-                rotate: { z: 2 },
-                scale: 0.92,
-                interval: 220,
-                delay: 450,
-            });
+            sr.reveal(".single-project-image-wrapper", { origin: "bottom", distance: "80px", delay: 600, scale: 0.95 });
 
-            sr.reveal("#projects .projects-heading", {
-                origin: "bottom",
-                distance: "55px",
-                delay: 250,
-            });
-            sr.reveal("#projects .project-content", {
-                origin: "left",
-                distance: "110px",
-                delay: 400,
-            });
-            sr.reveal("#projects .project-image img:nth-child(1)", {
-                origin: "right",
-                distance: "130px",
-                delay: 500,
-            });
-            sr.reveal("#projects .project-image img:nth-child(2)", {
-                origin: "right",
-                distance: "130px",
-                delay: 650,
-            });
-            sr.reveal("#projects .single-project", {
-                distance: "0px",
-                delay: 750,
-                interval: 220,
-            });
+            sr.reveal(".single-project-full-description h2", { origin: "left", distance: "50px", delay: 700 });
+            sr.reveal(".single-project-full-description p", { origin: "bottom", distance: "50px", delay: 800, interval: 120 });
 
-            sr.reveal("#skills .skills-title", {
-                origin: "bottom",
-                distance: "55px",
-                delay: 250,
-            });
-            sr.reveal("#skills .skills-subtitle", {
-                origin: "bottom",
-                distance: "45px",
-                delay: 350,
-            });
-            sr.reveal("#skills .skill-box", {
-                origin: "bottom",
-                distance: "35px",
-                scale: 0.92,
-                interval: 160,
-                delay: 450,
-            });
+            sr.reveal(".single-project-navigation a", { origin: "bottom", distance: "40px", delay: 900, interval: 150 });
 
-            sr.reveal("#contact .illustration-area", {
-                origin: "left",
-                distance: "100px",
-                delay: 250,
-            });
-            sr.reveal("#contact .contact-card", {
-                origin: "right",
-                distance: "100px",
-                delay: 400,
-            });
-            sr.reveal(
-                "#contact .contact-info h2, #contact .message-form-section h2",
-                { origin: "bottom", distance: "45px", interval: 120, delay: 550 }
-            );
-            sr.reveal("#contact .contact-info p", {
-                origin: "bottom",
-                distance: "35px",
-                delay: 650,
-            });
-            sr.reveal("#contact .contact-details .detail-item", {
-                origin: "bottom",
-                distance: "30px",
-                interval: 160,
-                delay: 800,
-            });
-            sr.reveal(
-                "#contact .message-form-section form label, #contact .message-form-section button",
-                { origin: "bottom", distance: "35px", interval: 160, delay: 950 }
-            );
-            sr.reveal("#contact .abstract-shape", {
-                origin: "bottom",
-                distance: "70px",
-                delay: 1100,
-            });
-            sr.reveal("#contact .footer", {
-                origin: "bottom",
-                distance: "60px",
-                delay: 1000,
-            });
+            sr.reveal("#contact .illustration-area", { origin: "left", distance: "100px", delay: 1000 });
+            sr.reveal("#contact .contact-card", { origin: "right", distance: "100px", delay: 1100 });
+            sr.reveal("#contact .contact-info h2, #contact .message-form-section h2", { origin: "bottom", distance: "40px", delay: 1200, interval: 100 });
+            sr.reveal("#contact .contact-info p", { origin: "bottom", distance: "30px", delay: 1300 });
+            sr.reveal("#contact .contact-details .detail-item", { origin: "bottom", distance: "30px", delay: 1400, interval: 100 });
+            sr.reveal("#contact .message-form-section form label, #contact .message-form-section button", { origin: "bottom", distance: "30px", delay: 1500, interval: 100 });
+            sr.reveal("#contact .abstract-shape", { origin: "bottom", distance: "70px", delay: 1600 });
+            sr.reveal(".footer", { origin: "bottom", distance: "50px", delay: 1500 });
         });
     </script>
 
-    <script>
-        var swiper = new Swiper(".experience-slider", {
-            loop: true,
-            speed: 900,
-            navigation: {
-                nextEl: ".custom-next",
-                prevEl: ".custom-prev",
-            },
-        });
-    </script>
-
-    <script>
-        document.querySelectorAll(".certificate-single img").forEach((img) => {
-            img.style.cursor = "pointer";
-            img.addEventListener("click", () => {
-                window.open(img.src, "_blank");
-            });
-        });
-    </script>
-    <script>
-        document.addEventListener("scroll", function () {
-            if (document.documentElement.scrollTop > 0 || document.body.scrollTop > 0) {
-                document.querySelector("header").classList.add("shrink");
-                document.body.classList.add("shrink");
-            } else {
-                document.querySelector("header").classList.remove("shrink");
-                document.body.classList.remove("shrink");
-            }
-        });
-
-    </script>
 </body>
 
 </html>
