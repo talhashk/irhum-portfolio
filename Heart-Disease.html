@@ -281,7 +281,18 @@
             sr.reveal(".footer", { origin: "bottom", distance: "50px", delay: 1500 });
         });
     </script>
+    <script>
+        document.addEventListener("scroll", function () {
+            if (document.documentElement.scrollTop > 0 || document.body.scrollTop > 0) {
+                document.querySelector("header").classList.add("shrink");
+                document.body.classList.add("shrink");
+            } else {
+                document.querySelector("header").classList.remove("shrink");
+                document.body.classList.remove("shrink");
+            }
+        });
 
+    </script>
 </body>
 
 </html>
