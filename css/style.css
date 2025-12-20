@@ -1538,10 +1538,13 @@ header nav a:hover {
     margin: 3rem 0;
   }
   .single-project-inner {
-    padding: 4rem 0;
+    padding: 8rem 0;
   }
   .single-project-navigation {
     flex-direction: column;
+  }
+  .single-project-window {
+    padding: 0.5rem;
   }
   .single-project-btn {
     text-align: center;
